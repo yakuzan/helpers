@@ -1,0 +1,26 @@
+{
+    "name": "yakuzan/helpers",
+    "license": "MIT",
+    "description": "a php helper for most needed functions in php.",
+    "authors": [
+        {
+            "name": "yoeunes",
+            "email": "younes.khoubza@gmail.com"
+        },
+        {
+            "name": "imanebahiaoui",
+            "email": "bahiaoui.imane@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    }
+}
