@@ -74,3 +74,13 @@ if (!function_exists('host')) {
         }
     }
 }
+
+if (!function_exists('script')) {
+    function script()
+    {
+        if (isset($_SERVER[ 'SCRIPT_NAME' ])) {
+
+            return $_SERVER[ 'SCRIPT_NAME' ];
+        }
+    }
+}
