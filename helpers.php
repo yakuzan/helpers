@@ -95,3 +95,13 @@ if (!function_exists('query')) {
     }
 }
 
+if (!function_exists('method')) {
+    function method()
+    {
+        if (isset($_SERVER[ 'REQUEST_METHOD' ])) {
+
+            return $_SERVER[ 'REQUEST_METHOD' ];
+        }
+    }
+}
+
