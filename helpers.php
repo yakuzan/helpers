@@ -64,3 +64,13 @@ if (!function_exists('uri')) {
         }
     }
 }
+
+if (!function_exists('host')) {
+    function host()
+    {
+        if (isset($_SERVER[ 'HTTP_HOST' ])) {
+
+            return $_SERVER[ 'HTTP_HOST' ];
+        }
+    }
+}
