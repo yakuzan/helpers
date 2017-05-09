@@ -105,3 +105,25 @@ if (!function_exists('method')) {
     }
 }
 
+if (!function_exists('ip')) {
+    function ip()
+    {
+        $types = [
+            'HTTP_CLIENT_IP',
+            'HTTP_X_FORWARDED_FOR',
+            'HTTP_X_FORWARDED',
+            'HTTP_FORWARDED_FOR',
+            'HTTP_FORWARDED',
+            'REMOTE_ADDR',
+        ];
+
+        foreach ($types as $type) {
+            if (isset($_SERVER[ $type ])) {
+                return $_SERVER[ $type ];
+            }
+        }
+
+        return 'UNKNOWN';
+    }
+}
+
