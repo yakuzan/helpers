@@ -84,3 +84,14 @@ if (!function_exists('script')) {
         }
     }
 }
+
+if (!function_exists('query')) {
+    function query()
+    {
+        if (isset($_SERVER[ 'QUERY_STRING' ])) {
+
+            return $_SERVER[ 'QUERY_STRING' ];
+        }
+    }
+}
+
