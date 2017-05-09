@@ -127,3 +127,17 @@ if (!function_exists('ip')) {
     }
 }
 
+if (!function_exists('protocol')) {
+    function protocol()
+    {
+        $https = [
+            !empty($t_1 = $_SERVER[ 'HTTPS' ]) && in_array($t_1, ['on', 1], true),
+            !empty($t_2 = $_SERVER[ 'SERVER_PORT' ]) && 443 === $t_2,
+            !empty($t_3 = $_SERVER[ 'REQUEST_SCHEME' ]) && 'https' === $t_3,
+            !empty($t_4 = $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ]) && 'https' === $t_4,
+        ];
+
+        return in_array(true, $https, true) ? 'https' : 'http';
+    }
+
+}
