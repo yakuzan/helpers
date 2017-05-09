@@ -55,3 +55,12 @@ if (!function_exists('getHtml')) {
         return $result;
     }
 }
+
+if (!function_exists('uri')) {
+    function uri()
+    {
+        if (isset($_SERVER[ 'REQUEST_URI' ])) {
+            return $_SERVER[ 'REQUEST_URI' ];
+        }
+    }
+}
