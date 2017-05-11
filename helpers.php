@@ -185,3 +185,19 @@ if (!function_exists('csrf_token')) {
     {
     }
 }
+
+if (!function_exists('request')) {
+    function request($key = null, $default = null)
+    {
+
+    }
+}
+
+if (!function_exists('json')) {
+    function json($data)
+    {
+        header('Content-Type: application/json');
+
+        return json_encode($data);
+    }
+}
