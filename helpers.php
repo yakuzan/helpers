@@ -174,3 +174,14 @@ if (!function_exists('cookie')) {
     }
 }
 
+if (!function_exists('csrf_field')) {
+    function csrf_field()
+    {
+    }
+}
+
+if (!function_exists('csrf_token')) {
+    function csrf_token()
+    {
+    }
+}
