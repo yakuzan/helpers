@@ -1,23 +1,26 @@
 {
-    "name": "yakuzan/helpers",
-    "license": "MIT",
+    "name"       : "yakuzan/helpers",
+    "license"    : "MIT",
     "description": "a php helper for most needed functions in php.",
-    "authors": [
+    "authors"    : [
         {
-            "name": "yoeunes",
+            "name" : "yoeunes",
             "email": "younes.khoubza@gmail.com"
         },
         {
-            "name": "imanebahiaoui",
+            "name" : "imanebahiaoui",
             "email": "bahiaoui.imane@gmail.com"
         }
     ],
-    "autoload": {
+    "autoload"   : {
+        "psr-4": {
+            "Yakuzan\\Helpers\\": "src"
+        },
         "files": [
             "helpers.php"
         ]
     },
-    "require": {
+    "require"    : {
         "php": ">=5.4"
     },
     "require-dev": {

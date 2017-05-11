@@ -1,5 +1,7 @@
 <?php
 
+use Yakuzan\Helpers\Session;
+
 if (!function_exists('dump')) {
     function dump($data = [])
     {
@@ -140,4 +142,19 @@ if (!function_exists('protocol')) {
         return in_array(true, $https, true) ? 'https' : 'http';
     }
 
+}
+
+if (!function_exists('session')) {
+    function session($name = null, $default = null)
+    {
+        if (is_null($name)) {
+            return new Session();
+        }
+
+        if (is_array($name)) {
+            return Session::put($name);
+        }
+
+        return Session::get($name, $default);
+    }
 }
