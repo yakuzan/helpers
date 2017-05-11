@@ -158,3 +158,19 @@ if (!function_exists('session')) {
         return Session::get($name, $default);
     }
 }
+
+if (!function_exists('cookie')) {
+    function cookie($name = null, $default = null)
+    {
+        if (is_null($name)) {
+            return new Cookie();
+        }
+
+        if (is_array($name)) {
+            return Cookie::put($name);
+        }
+
+        return Cookie::get($name, $default);
+    }
+}
+
