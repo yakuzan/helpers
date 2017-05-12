@@ -20,7 +20,7 @@ class Cookie
 	}
 
 	public static function get($name)
-    {
+  {
         if (is_array($name)) {
             $output = [];
             foreach ($name as $item) {
