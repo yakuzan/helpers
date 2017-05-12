@@ -21,13 +21,13 @@ class Session
         if (is_array($name)) {
             $output = [];
             foreach ($name as $item) {
-                $output[ (string)$item ] = isset($_SESSION[ (string)$item ]);
+                $output[(string) $item] = isset($_SESSION[(string) $item]);
             }
 
             return $output;
         }
 
-        return isset($_SESSION[ (string)$name ]);
+        return isset($_SESSION[(string) $name]);
     }
 
     public static function get($name)
@@ -35,26 +35,26 @@ class Session
         if (is_array($name)) {
             $output = [];
             foreach ($name as $item) {
-                $output[ (string)$item ] = self::exists($item) ? $_SESSION[ (string)$item ] : null;
+                $output[(string) $item] = self::exists($item) ? $_SESSION[(string) $item] : null;
             }
 
             return $output;
         }
 
-        return self::exists($name) ? $_SESSION[ (string)$name ] : null;
+        return self::exists($name) ? $_SESSION[(string) $name] : null;
     }
 
     public static function put($name, $value = null)
     {
         if (is_array($name)) {
             foreach ($name as $key => $v) {
-                $_SESSION[ (string)$key ] = $v;
+                $_SESSION[(string) $key] = $v;
             }
 
             return $name;
         }
 
-        return $_SESSION[ (string)$name ] = $value;
+        return $_SESSION[(string) $name] = $value;
     }
 
     public static function delete($name)
@@ -64,13 +64,13 @@ class Session
         if (null !== $output && is_array($output)) {
             foreach ($output as $item) {
                 if (self::exists($item)) {
-                    unset($_SESSION[ (string)$item ]);
+                    unset($_SESSION[(string) $item]);
                 }
             }
         }
 
         if (null !== $output && !is_array($output)) {
-            unset($_SESSION[ (string)$name ]);
+            unset($_SESSION[(string) $name]);
         }
 
         return $output;
