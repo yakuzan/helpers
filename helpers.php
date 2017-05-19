@@ -323,3 +323,28 @@ if ( ! function_exists('array_remove')) {
         }
     }
 }
+
+if ( ! function_exists('array_add')) {
+    /**
+     * Add an element to the array at a specific location
+     * using the "dot" notation.
+     *
+     * @param array $array
+     * @param $key
+     * @param $value
+     *
+     * @return array
+     */
+    function array_add(array &$array, $key, $value) {
+        $target = array_get($array, $key, []);
+
+        if ( ! is_array($target)) {
+            $target = [$target];
+        }
+
+        $target[] = $value;
+         array_set($array, $key, $target);
+
+        return $array;
+    }
+}
