@@ -289,3 +289,37 @@ if ( ! function_exists('array_set')) {
         return $array;
     }
 }
+
+if ( ! function_exists('array_remove')) {
+    /**
+     * Remove one or many array items from a given array using "dot" notation.
+     *
+     * @param  array $array
+     * @param  array|string $keys
+     *
+     * @return void
+     */
+    function array_remove(array &$array, $keys) {
+        $original = &$array;
+
+        if ( ! is_array($keys)) {
+            $keys = [$keys];
+        }
+
+        foreach ((array) $keys as $key) {
+            $parts = explode('.', $key);
+
+            while (count($parts) > 1) {
+                $part = array_shift($parts);
+
+                if (isset($array[$part]) && is_array($array[$part])) {
+                    $array = &$array[$part];
+                }
+            }
+
+            unset($array[array_shift($parts)]);
+
+            $array = &$original;
+        }
+    }
+}
