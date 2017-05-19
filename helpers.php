@@ -540,3 +540,20 @@ if ( ! function_exists('array_is_associative')) {
         return false;
     }
 }
+
+if ( ! function_exists('array_is_indexed')) {
+    /**
+     * Check if an array has a numeric index.
+     *
+     * @param array $array
+     *
+     * @return bool
+     */
+    function array_is_indexed(array $array) {
+        if ($array == []) {
+            return true;
+        }
+
+        return ! array_is_associative($array);
+    }
+}
