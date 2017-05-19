@@ -256,3 +256,36 @@ if ( ! function_exists('array_has')) {
         return true;
     }
 }
+
+if ( ! function_exists('array_set')) {
+    /**
+     * Set an array item to a given value using "dot" notation.
+     *
+     * @param  array $array
+     * @param  string $key
+     * @param  mixed $value
+     *
+     * @return array
+     */
+    function array_set(array &$array, $key, $value) {
+        if ($key === null) {
+            return null;
+        }
+
+        $keys = explode('.', $key);
+
+        while (count($keys) > 1) {
+            $key = array_shift($keys);
+
+            if ( ! isset($array[$key]) || ! is_array($array[$key])) {
+                $array[$key] = [];
+            }
+
+            $array = &$array[$key];
+        }
+
+        $array[array_shift($keys)] = $value;
+
+        return $array;
+    }
+}
