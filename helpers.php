@@ -369,3 +369,19 @@ if ( ! function_exists('array_take')) {
         return $value;
     }
 }
+
+if ( ! function_exists('array_first')) {
+    /**
+     * @param array $array
+     * @param null $default
+     *
+     * @return mixed
+     */
+    function array_first(array $array, $default = null) {
+        if (empty($array)) {
+            return $default;
+        }
+
+        return reset($array);
+    }
+}
