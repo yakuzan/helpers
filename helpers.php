@@ -385,3 +385,19 @@ if ( ! function_exists('array_first')) {
         return reset($array);
     }
 }
+
+if ( ! function_exists('array_last')) {
+    /**
+     * @param array $array
+     * @param null $default
+     *
+     * @return mixed
+     */
+    function array_last(array $array, $default = null) {
+        if (empty($array)) {
+            return $default;
+        }
+
+        return array_first(array_reverse($array, true), $default);
+    }
+}
