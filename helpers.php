@@ -196,19 +196,20 @@ if (!function_exists('json')) {
     }
 }
 
-if ( ! function_exists('array_get')) {
+if (!function_exists('array_get')) {
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  array $array
-     * @param  string $key
-     * @param  mixed $default
+     * @param array  $array
+     * @param string $key
+     * @param mixed  $default
      *
      * @return mixed
      */
-    function array_get(array $array, $key, $default = null) {
+    function array_get(array $array, $key, $default = null)
+    {
         if ($key === null) {
-            return null;
+            return;
         }
 
         if (isset($array[$key])) {
@@ -216,7 +217,7 @@ if ( ! function_exists('array_get')) {
         }
 
         foreach (explode('.', $key) as $segment) {
-            if ( ! is_array($array) || ! array_key_exists($segment, $array)) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
                 return $default;
             }
 
@@ -227,16 +228,17 @@ if ( ! function_exists('array_get')) {
     }
 }
 
-if ( ! function_exists('array_has')) {
+if (!function_exists('array_has')) {
     /**
      * Check if an item exists in an array using "dot" notation.
      *
-     * @param  array $array
-     * @param  string $key
+     * @param array  $array
+     * @param string $key
      *
      * @return bool
      */
-    function array_has(array $array, $key) {
+    function array_has(array $array, $key)
+    {
         if (empty($array) || $key === null) {
             return false;
         }
@@ -246,7 +248,7 @@ if ( ! function_exists('array_has')) {
         }
 
         foreach (explode('.', $key) as $segment) {
-            if ( ! is_array($array) || ! array_key_exists($segment, $array)) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
                 return false;
             }
 
@@ -257,19 +259,20 @@ if ( ! function_exists('array_has')) {
     }
 }
 
-if ( ! function_exists('array_set')) {
+if (!function_exists('array_set')) {
     /**
      * Set an array item to a given value using "dot" notation.
      *
-     * @param  array $array
-     * @param  string $key
-     * @param  mixed $value
+     * @param array  $array
+     * @param string $key
+     * @param mixed  $value
      *
      * @return array
      */
-    function array_set(array &$array, $key, $value) {
+    function array_set(array &$array, $key, $value)
+    {
         if ($key === null) {
-            return null;
+            return;
         }
 
         $keys = explode('.', $key);
@@ -277,7 +280,7 @@ if ( ! function_exists('array_set')) {
         while (count($keys) > 1) {
             $key = array_shift($keys);
 
-            if ( ! isset($array[$key]) || ! is_array($array[$key])) {
+            if (!isset($array[$key]) || !is_array($array[$key])) {
                 $array[$key] = [];
             }
 
@@ -290,19 +293,20 @@ if ( ! function_exists('array_set')) {
     }
 }
 
-if ( ! function_exists('array_remove')) {
+if (!function_exists('array_remove')) {
     /**
      * Remove one or many array items from a given array using "dot" notation.
      *
-     * @param  array $array
-     * @param  array|string $keys
+     * @param array        $array
+     * @param array|string $keys
      *
      * @return void
      */
-    function array_remove(array &$array, $keys) {
+    function array_remove(array &$array, $keys)
+    {
         $original = &$array;
 
-        if ( ! is_array($keys)) {
+        if (!is_array($keys)) {
             $keys = [$keys];
         }
 
@@ -324,7 +328,7 @@ if ( ! function_exists('array_remove')) {
     }
 }
 
-if ( ! function_exists('array_add')) {
+if (!function_exists('array_add')) {
     /**
      * Add an element to the array at a specific location
      * using the "dot" notation.
@@ -335,21 +339,22 @@ if ( ! function_exists('array_add')) {
      *
      * @return array
      */
-    function array_add(array &$array, $key, $value) {
+    function array_add(array &$array, $key, $value)
+    {
         $target = array_get($array, $key, []);
 
-        if ( ! is_array($target)) {
+        if (!is_array($target)) {
             $target = [$target];
         }
 
         $target[] = $value;
-         array_set($array, $key, $target);
+        array_set($array, $key, $target);
 
         return $array;
     }
 }
 
-if ( ! function_exists('array_take')) {
+if (!function_exists('array_take')) {
     /**
      * Get an item and remove it from the array.
      *
@@ -359,7 +364,8 @@ if ( ! function_exists('array_take')) {
      *
      * @return mixed
      */
-    function array_take(array &$array, $key, $default = null) {
+    function array_take(array &$array, $key, $default = null)
+    {
         $value = array_get($array, $key, $default);
 
         if (array_has($array, $key)) {
@@ -370,14 +376,15 @@ if ( ! function_exists('array_take')) {
     }
 }
 
-if ( ! function_exists('array_first')) {
+if (!function_exists('array_first')) {
     /**
      * @param array $array
-     * @param null $default
+     * @param null  $default
      *
      * @return mixed
      */
-    function array_first(array $array, $default = null) {
+    function array_first(array $array, $default = null)
+    {
         if (empty($array)) {
             return $default;
         }
@@ -386,14 +393,15 @@ if ( ! function_exists('array_first')) {
     }
 }
 
-if ( ! function_exists('array_last')) {
+if (!function_exists('array_last')) {
     /**
      * @param array $array
-     * @param null $default
+     * @param null  $default
      *
      * @return mixed
      */
-    function array_last(array $array, $default = null) {
+    function array_last(array $array, $default = null)
+    {
         if (empty($array)) {
             return $default;
         }
@@ -402,17 +410,18 @@ if ( ! function_exists('array_last')) {
     }
 }
 
-if ( ! function_exists('array_reset')) {
+if (!function_exists('array_reset')) {
     /**
      * Reset all numerical indexes of an array (start from zero).
      * Non-numerical indexes will stay untouched. Returns a new array.
      *
-     * @param array $array
+     * @param array      $array
      * @param bool|false $deep
      *
      * @return array
      */
-    function array_reset(array $array, $deep = false) {
+    function array_reset(array $array, $deep = false)
+    {
         $target = [];
 
         foreach ($array as $key => $value) {
@@ -431,24 +440,24 @@ if ( ! function_exists('array_reset')) {
     }
 }
 
-
-if ( ! function_exists('array_dot')) {
+if (!function_exists('array_dot')) {
     /**
      * Flatten a multi-dimensional associative array with dots.
      *
-     * @param  array $array
-     * @param  string $prepend
+     * @param array  $array
+     * @param string $prepend
      *
      * @return array
      */
-    function array_dot(array $array, $prepend = '') {
+    function array_dot(array $array, $prepend = '')
+    {
         $results = [];
 
         foreach ($array as $key => $value) {
             if (is_array($value)) {
-                $results = array_merge($results, array_dot($value, $prepend . $key . '.'));
+                $results = array_merge($results, array_dot($value, $prepend.$key.'.'));
             } else {
-                $results[$prepend . $key] = $value;
+                $results[$prepend.$key] = $value;
             }
         }
 
@@ -456,7 +465,7 @@ if ( ! function_exists('array_dot')) {
     }
 }
 
-if ( ! function_exists('array_extend')) {
+if (!function_exists('array_extend')) {
     /**
      * Extend one array with another.
      *
@@ -464,7 +473,8 @@ if ( ! function_exists('array_extend')) {
      *
      * @return array
      */
-    function array_extend(array $arrays) {
+    function array_extend(array $arrays)
+    {
         $merged = [];
 
         foreach (func_get_args() as $array) {
@@ -481,7 +491,7 @@ if ( ! function_exists('array_extend')) {
     }
 }
 
-if ( ! function_exists('array_extend_distinct')) {
+if (!function_exists('array_extend_distinct')) {
     /**
      * Extend one array with another. Non associative arrays will not be merged
      * but rather replaced.
@@ -490,7 +500,8 @@ if ( ! function_exists('array_extend_distinct')) {
      *
      * @return array
      */
-    function array_extend_distinct(array $arrays) {
+    function array_extend_distinct(array $arrays)
+    {
         $merged = [];
 
         foreach (func_get_args() as $array) {
@@ -514,7 +525,7 @@ if ( ! function_exists('array_extend_distinct')) {
     }
 }
 
-if ( ! function_exists('array_is_associative')) {
+if (!function_exists('array_is_associative')) {
     /**
      * Check if the given array is associative.
      *
@@ -522,7 +533,8 @@ if ( ! function_exists('array_is_associative')) {
      *
      * @return bool
      */
-    function array_is_associative(array $array) {
+    function array_is_associative(array $array)
+    {
         if ($array == []) {
             return true;
         }
@@ -531,7 +543,7 @@ if ( ! function_exists('array_is_associative')) {
 
         if (array_keys($keys) !== $keys) {
             foreach ($keys as $key) {
-                if ( ! is_numeric($key)) {
+                if (!is_numeric($key)) {
                     return true;
                 }
             }
@@ -541,7 +553,7 @@ if ( ! function_exists('array_is_associative')) {
     }
 }
 
-if ( ! function_exists('array_is_indexed')) {
+if (!function_exists('array_is_indexed')) {
     /**
      * Check if an array has a numeric index.
      *
@@ -549,16 +561,17 @@ if ( ! function_exists('array_is_indexed')) {
      *
      * @return bool
      */
-    function array_is_indexed(array $array) {
+    function array_is_indexed(array $array)
+    {
         if ($array == []) {
             return true;
         }
 
-        return ! array_is_associative($array);
+        return !array_is_associative($array);
     }
 }
 
-if ( ! function_exists('array_contains')) {
+if (!function_exists('array_contains')) {
     /**
      * Check if an array contains a specific value.
      *
@@ -568,7 +581,8 @@ if ( ! function_exists('array_contains')) {
      *
      * @return bool
      */
-    function array_contains(array $array, $search, $strict = true) {
+    function array_contains(array $array, $search, $strict = true)
+    {
         return in_array($search, $array, $strict);
     }
 }
