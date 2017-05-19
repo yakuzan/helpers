@@ -513,3 +513,30 @@ if ( ! function_exists('array_extend_distinct')) {
         return $merged;
     }
 }
+
+if ( ! function_exists('array_is_associative')) {
+    /**
+     * Check if the given array is associative.
+     *
+     * @param array $array
+     *
+     * @return bool
+     */
+    function array_is_associative(array $array) {
+        if ($array == []) {
+            return true;
+        }
+
+        $keys = array_keys($array);
+
+        if (array_keys($keys) !== $keys) {
+            foreach ($keys as $key) {
+                if ( ! is_numeric($key)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
