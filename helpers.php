@@ -401,3 +401,32 @@ if ( ! function_exists('array_last')) {
         return array_first(array_reverse($array, true), $default);
     }
 }
+
+if ( ! function_exists('array_reset')) {
+    /**
+     * Reset all numerical indexes of an array (start from zero).
+     * Non-numerical indexes will stay untouched. Returns a new array.
+     *
+     * @param array $array
+     * @param bool|false $deep
+     *
+     * @return array
+     */
+    function array_reset(array $array, $deep = false) {
+        $target = [];
+
+        foreach ($array as $key => $value) {
+            if ($deep && is_array($value)) {
+                $value = array_reset($value);
+            }
+
+            if (is_numeric($key)) {
+                $target[] = $value;
+            } else {
+                $target[$key] = $value;
+            }
+        }
+
+        return $target;
+    }
+}
