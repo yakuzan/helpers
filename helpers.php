@@ -455,3 +455,28 @@ if ( ! function_exists('array_dot')) {
         return $results;
     }
 }
+
+if ( ! function_exists('array_extend')) {
+    /**
+     * Extend one array with another.
+     *
+     * @param array $arrays
+     *
+     * @return array
+     */
+    function array_extend(array $arrays) {
+        $merged = [];
+
+        foreach (func_get_args() as $array) {
+            foreach ($array as $key => $value) {
+                if (is_array($value) && array_has($merged, $key) && is_array($merged[$key])) {
+                    $merged[$key] = array_extend($merged[$key], $value);
+                } else {
+                    $merged[$key] = $value;
+                }
+            }
+        }
+
+        return $merged;
+    }
+}
